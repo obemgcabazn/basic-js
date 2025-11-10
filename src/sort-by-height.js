@@ -13,23 +13,12 @@ const {NotImplementedError} = require('../lib');
  */
 function sortByHeight(arr) {
     const emptyArr = arr.map((i) => {
-        if (i === -1) {
-            return i;
-        } else {
-            return;
-        }
-    })
-    const dataArr = arr.filter(i => i !== -1).sort((a,b) => a - b);
-    const sortedArr = emptyArr.map((i) => {
-        if (i === undefined) {
-          return dataArr.shift();
-        } else {
-            return i;
-        }
+        return (i === -1) ? i : undefined;
     });
-    console.log(sortedArr);
-
-    return sortedArr;
+    const dataArr = arr.filter(i => i !== -1).sort((a, b) => a - b);
+    return emptyArr.map((i) => {
+        return (i === undefined) ? dataArr.shift() : i;
+    });
 }
 
 module.exports = {
